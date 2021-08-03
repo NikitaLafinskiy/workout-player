@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
+import { PlaylistContextProvider } from '../Contexts/PlaylistContext';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <PlaylistContextProvider>
+      <Component {...pageProps} />
+    </PlaylistContextProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
