@@ -13,15 +13,12 @@ function Player(props) {
     player.load();
   }, 0);
 
-  const { items, count, curr, setCurr } = useContext(PlaylistContext);
-  curr.forEach((obj) => {
-    clearTimeout(obj);
-  });
+  const { items } = useContext(PlaylistContext);
 
   const videoRef = useRef(null);
   const router = useRouter();
-  const [mute, setMute] = useState(false);
 
+  console.log(router.query);
   console.log(localStorage.getItem('count'));
 
   useEffect(() => {
@@ -41,7 +38,7 @@ function Player(props) {
 
   return (
     <>
-      <Video mute={mute} ref={videoRef} id='BV7RkEL6oRc' />
+      <Video ref={videoRef} id='BV7RkEL6oRc' />
     </>
   );
 }

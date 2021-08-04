@@ -1,7 +1,44 @@
-import Player from '../../Components/Player';
+import React, { useEffect, useContext, useState, useRef } from 'react';
+import YouTubeToHtml5 from '@thelevicole/youtube-to-html5-loader';
+import { useRouter } from 'next/router';
+import { PlaylistContext } from '../../Contexts/PlaylistContext';
+import Video from '../../Components/Video';
 
-const Vid = () => {
-  return <Player />;
-};
+function Player(props) {
+  const player = new YouTubeToHtml5({
+    autoload: false,
+    withAudio: true,
+  });
+  setTimeout(() => {
+    player.load();
+  }, 0);
 
-export default Vid;
+  const router = useRouter();
+  const videoRef = useRef(null);
+
+  const src = router.query.src;
+
+  useEffect(() => {
+    if (videoRef.current && typeof window !== 'undefined') {
+      console.log('useeffect');
+      const pauseTimeout = setTimeout(() => {
+        videoRef.current?.pause();
+        videoRef.current.volume = 0;
+        console.log('IT RAN NOW');
+        localStorage.setItem(
+          'count',
+          parseInt(localStorage.getItem('count')) + 1
+        );
+        router.push('/intermission');
+      }, 45 * 1000);
+    }
+  }, [videoRef.current]);
+
+  return (
+    <>
+      <Video ref={videoRef} id={src} />
+    </>
+  );
+}
+
+export default Player;

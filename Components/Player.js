@@ -13,14 +13,8 @@ function Player(props) {
     player.load();
   }, 0);
 
-  const { setCount, count, curr, setCurr } = useContext(PlaylistContext);
-  curr.forEach((obj) => {
-    clearTimeout(obj);
-  });
-  // setCount(count + 1);
   const router = useRouter();
   const videoRef = useRef(null);
-  const [mute, setMute] = useState(false);
 
   const src = router.query.src;
 
@@ -42,7 +36,7 @@ function Player(props) {
 
   return (
     <>
-      <Video mute={mute} ref={videoRef} id={src} />
+      <Video ref={videoRef} id={src} />
     </>
   );
 }
