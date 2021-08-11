@@ -10,10 +10,9 @@ function Player(props) {
 
   const src = router.query.src;
   const { allow } = useContext(PlaylistContext);
-  console.log(allow);
+
   useEffect(() => {
     if (videoRef.current && typeof window !== 'undefined' && allow) {
-      console.log('ran');
       const player = new YouTubeToHtml5({
         autoload: false,
         withAudio: true,
@@ -21,8 +20,7 @@ function Player(props) {
       setTimeout(() => {
         player.load();
       }, 0);
-
-      console.log('useeffect');
+      videoRef.current?.play();
       const pauseTimeout = setTimeout(() => {
         videoRef.current?.pause();
         videoRef.current.volume = 0;

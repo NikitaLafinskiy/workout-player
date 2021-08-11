@@ -9,7 +9,7 @@ function Player(props) {
 
   const videoRef = useRef(null);
   const router = useRouter();
-  console.log(allow);
+
   useEffect(() => {
     if (videoRef.current && typeof window !== 'undefined' && allow) {
       const player = new YouTubeToHtml5({
@@ -19,7 +19,7 @@ function Player(props) {
       setTimeout(() => {
         player.load();
       }, 0);
-
+      videoRef.current?.play();
       const pauseTimeout = setTimeout(() => {
         videoRef.current?.pause();
         videoRef.current.volume = 0;
