@@ -9,7 +9,7 @@ const Video = (props, ref) => {
         autoPlay
         width='100%'
         height='100%'
-        playsinline
+        playsInline
         muted={props.mute}></video>
     </div>
   );
