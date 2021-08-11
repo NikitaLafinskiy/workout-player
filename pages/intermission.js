@@ -5,26 +5,24 @@ import Video from '../Components/Video';
 import { PlaylistContext } from '../Contexts/PlaylistContext';
 
 function Player(props) {
-  const player = new YouTubeToHtml5({
-    autoload: false,
-    withAudio: true,
-  });
-  setTimeout(() => {
-    player.load();
-  }, 0);
-
-  const { items } = useContext(PlaylistContext);
+  const { items, allow } = useContext(PlaylistContext);
 
   const videoRef = useRef(null);
   const router = useRouter();
-
+  console.log(allow);
   useEffect(() => {
-    if (videoRef.current && typeof window !== 'undefined') {
-      console.log('useeffect');
+    if (videoRef.current && typeof window !== 'undefined' && allow) {
+      const player = new YouTubeToHtml5({
+        autoload: false,
+        withAudio: true,
+      });
+      setTimeout(() => {
+        player.load();
+      }, 0);
+
       const pauseTimeout = setTimeout(() => {
         videoRef.current?.pause();
         videoRef.current.volume = 0;
-        console.log('IT RAN NOW');
         router.push('/play/' + items[localStorage.getItem('count')]);
       }, 15 * 1000);
     }
@@ -32,7 +30,7 @@ function Player(props) {
 
   return (
     <>
-      <Video ref={videoRef} id='BV7RkEL6oRc' />
+      <Video ref={videoRef} id='XUzwdBQDzxw' />
     </>
   );
 }

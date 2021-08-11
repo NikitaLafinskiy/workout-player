@@ -8,11 +8,12 @@ function Index(props) {
     'PLy1OvPJDc50Ri963vIYgtnjgPqLTMat_V',
     'AIzaSyCkhQc1Gu6kmb6pYcfArYo75WXgSs_5PFw'
   );
-  const { setItems, setCount, count } = useContext(PlaylistContext);
+  const { setItems, count, setAllow } = useContext(PlaylistContext);
   const [itemID, setItemID] = useState([]);
 
   useEffect(() => {
     if (items) {
+      setAllow(true);
       items.forEach((obj) => {
         const id = obj.snippet.resourceId.videoId;
         setItemID((prev) => {

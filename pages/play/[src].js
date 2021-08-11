@@ -5,21 +5,23 @@ import { PlaylistContext } from '../../Contexts/PlaylistContext';
 import Video from '../../Components/Video';
 
 function Player(props) {
-  const player = new YouTubeToHtml5({
-    autoload: false,
-    withAudio: true,
-  });
-  setTimeout(() => {
-    player.load();
-  }, 0);
-
   const router = useRouter();
   const videoRef = useRef(null);
 
   const src = router.query.src;
-
+  const { allow } = useContext(PlaylistContext);
+  console.log(allow);
   useEffect(() => {
-    if (videoRef.current && typeof window !== 'undefined') {
+    if (videoRef.current && typeof window !== 'undefined' && allow) {
+      console.log('ran');
+      const player = new YouTubeToHtml5({
+        autoload: false,
+        withAudio: true,
+      });
+      setTimeout(() => {
+        player.load();
+      }, 0);
+
       console.log('useeffect');
       const pauseTimeout = setTimeout(() => {
         videoRef.current?.pause();
