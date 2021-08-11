@@ -4,17 +4,17 @@ const PlaylistContext = createContext();
 
 const PlaylistContextProvider = (props) => {
   const [items, setItems] = useState(null);
-  const [count, setCount] = useState(0);
+  const [intermissionItems, setIntermissionItems] = useState(null);
   const [allow, setAllow] = useState(false);
   return (
     <PlaylistContext.Provider
       value={{
         items,
         setItems,
-        count,
-        setCount,
         allow,
         setAllow,
+        intermissionItems,
+        setIntermissionItems,
       }}>
       {props.children}
     </PlaylistContext.Provider>

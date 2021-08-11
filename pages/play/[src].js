@@ -9,7 +9,7 @@ function Player(props) {
   const videoRef = useRef(null);
 
   const src = router.query.src;
-  const { allow } = useContext(PlaylistContext);
+  const { allow, intermissionItems } = useContext(PlaylistContext);
 
   useEffect(() => {
     if (videoRef.current && typeof window !== 'undefined' && allow) {
@@ -24,12 +24,14 @@ function Player(props) {
       const pauseTimeout = setTimeout(() => {
         videoRef.current?.pause();
         videoRef.current.volume = 0;
-        console.log('IT RAN NOW');
         localStorage.setItem(
           'count',
           parseInt(localStorage.getItem('count')) + 1
         );
-        router.push('/intermission');
+        router.push(
+          '/intermission/' +
+            intermissionItems[localStorage.getItem('intermissionCount')]
+        );
       }, 45 * 1000);
     }
   }, [videoRef.current]);
