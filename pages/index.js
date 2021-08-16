@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import Link from 'next/link';
 import usePlaylist from '../hooks/usePlaylist';
 import { PlaylistContext } from '../Contexts/PlaylistContext';
+import Circle from '../Components/Circle';
+import styles from '../styles/components/circle.module.css';
 
 function Index(props) {
   const key = 'AIzaSyCkhQc1Gu6kmb6pYcfArYo75WXgSs_5PFw';
@@ -47,9 +49,13 @@ function Index(props) {
   }
 
   const playLink = shuffled ? (
-    <Link href={`/play/${shuffled[0]}`}>
-      <a>caramel</a>
-    </Link>
+    <Circle index={true}>
+      <Link href={`/play/${shuffled[0]}`}>
+        <a style={{ height: '100%' }}>
+          <p id={styles.innerLink}>caramel</p>
+        </a>
+      </Link>
+    </Circle>
   ) : (
     <div></div>
   );

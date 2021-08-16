@@ -3,6 +3,7 @@ import YouTubeToHtml5 from '@thelevicole/youtube-to-html5-loader';
 import { useRouter } from 'next/router';
 import Video from '../../Components/Video';
 import { PlaylistContext } from '../../Contexts/PlaylistContext';
+import Circle from '../../Components/Circle';
 
 function Player(props) {
   const videoRef = useRef(null);
@@ -37,7 +38,9 @@ function Player(props) {
 
   return (
     <>
-      <Video ref={videoRef} id={src} />
+      <Circle index={false}>
+        <Video ref={videoRef} id={src} />
+      </Circle>
     </>
   );
 }
