@@ -45,7 +45,7 @@
   position: absolute;
   width: 30vw;
   height: 30vw;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -54,11 +54,11 @@
 }
 #videoCircle > * {
   position: relative;
-  top: -50%;
-  left: -50%;
+  top: -40%;
+  left: -40%;
   overflow: visible;
-  width: 200%;
-  height: 200%;
+  width: 180%;
+  height: 180%;
   overflow: visible;
   /* border-radius: 50%; */
 }

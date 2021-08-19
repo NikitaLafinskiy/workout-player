@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Video from '../../Components/Video';
 import { PlaylistContext } from '../../Contexts/PlaylistContext';
 import Circle from '../../Components/Circle';
+import Countdown from '../../Components/Countdown';
 
 function Player(props) {
   const videoRef = useRef(null);
@@ -31,7 +32,12 @@ function Player(props) {
           'intermissionCount',
           parseInt(localStorage.getItem('intermissionCount')) + 1
         );
-        router.push('/play/' + items[localStorage.getItem('count')]);
+        if (items[localStorage.getItem('count')]) {
+          router.push('/play/' + items[localStorage.getItem('count')]);
+        } else if (!items[localStorage.getItem('count')]) {
+          localStorage.setItem('count', 0);
+          router.push('/play/' + items[0]);
+        }
       }, 15 * 1000);
     }
   }, [videoRef.current]);
@@ -41,6 +47,7 @@ function Player(props) {
       <Circle index={false}>
         <Video ref={videoRef} id={src} />
       </Circle>
+      <Countdown time={15} />
     </>
   );
 }
