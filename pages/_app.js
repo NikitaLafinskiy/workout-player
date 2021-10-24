@@ -21,6 +21,8 @@ function MyApp({ Component, pageProps }) {
           href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
           rel='stylesheet'
         />
+        <title>Caramel Player</title>
+        <link rel='icon' href='/images/favicon.ico' />
       </Head>
       <Component {...pageProps} />
     </PlaylistContextProvider>

@@ -1,0 +1,8 @@
+#input {
+  width: 10vw;
+  height: 3vh;
+  background-color: transparent;
+  border: 1px solid #84c318;
+  position: relative;
+  border-radius: 5px;
+}

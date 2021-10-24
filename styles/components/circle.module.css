@@ -62,3 +62,52 @@
   overflow: visible;
   /* border-radius: 50%; */
 }
+#options {
+  position: absolute;
+  width: 5vw;
+  height: 5vw;
+  top: 3%;
+  right: 1.5%;
+  transform: translate(-1.5%, -3%);
+  cursor: pointer;
+}
+#options:hover {
+  animation: rotate 3s infinite;
+}
+@keyframes rotate {
+  from {
+    transform: translate(-1.5%, -3%) rotate(0deg);
+  }
+  to {
+    transform: translate(-1.5%, -3%) rotate(360deg);
+  }
+}
+#background_low {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  /* background-image: url(../../styles/curves/landing.svg); */
+  z-index: 0;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+#image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(10deg) scale(0.9);
+  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+#image:hover {
+  transform: translate(-50%, -50%) rotate(5deg) scale(1);
+  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@media (max-width: 1300px) {
+  #options {
+    width: 8vw;
+    height: 8vw;
+  }
+}

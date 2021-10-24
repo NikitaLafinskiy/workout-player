@@ -1,0 +1,62 @@
+        <svg
+          id='visual'
+          xmlns='http://www.w3.org/2000/svg'
+          xmlns:xlink='http://www.w3.org/1999/xlink'
+          version='1.1'>
+          <defs>
+            <linearGradient id='grad1_0' x1='43.8%' y1='0%' x2='100%' y2='100%'>
+              <stop
+                offset='14.444444444444446%'
+                stop-color='#84c318'
+                stop-opacity='1'></stop>
+              <stop
+                offset='85.55555555555554%'
+                stop-color='#84c318'
+                stop-opacity='1'></stop>
+            </linearGradient>
+          </defs>
+          <defs>
+            <linearGradient id='grad1_1' x1='43.8%' y1='0%' x2='100%' y2='100%'>
+              <stop
+                offset='14.444444444444446%'
+                stop-color='#84c318'
+                stop-opacity='1'></stop>
+              <stop
+                offset='85.55555555555554%'
+                stop-color='#503d42'
+                stop-opacity='1'></stop>
+            </linearGradient>
+          </defs>
+          <defs>
+            <linearGradient id='grad2_0' x1='0%' y1='0%' x2='56.3%' y2='100%'>
+              <stop
+                offset='14.444444444444446%'
+                stop-color='#84c318'
+                stop-opacity='1'></stop>
+              <stop
+                offset='85.55555555555554%'
+                stop-color='#84c318'
+                stop-opacity='1'></stop>
+            </linearGradient>
+          </defs>
+          <defs>
+            <linearGradient id='grad2_1' x1='0%' y1='0%' x2='56.3%' y2='100%'>
+              <stop
+                offset='14.444444444444446%'
+                stop-color='#503d42'
+                stop-opacity='1'></stop>
+              <stop
+                offset='85.55555555555554%'
+                stop-color='#84c318'
+                stop-opacity='1'></stop>
+            </linearGradient>
+          </defs>
+          <g transform='translate(0, 540)'>
+            <path
+              d='M0 -459C36.5 -415.5 73.1 -372 116.5 -358.5C159.9 -345.1 210.3 -361.5 256.3 -352.7C302.3 -343.9 343.9 -309.8 371.3 -269.8C398.8 -229.8 411.9 -183.8 424.2 -137.8C436.4 -91.9 447.7 -45.9 459 0L0 0Z'
+              fill='#748B75'></path>
+            <path
+              d='M0 -229.5C18.3 -207.8 36.5 -186 58.2 -179.3C80 -172.5 105.1 -180.8 128.1 -176.4C151.1 -172 172 -154.9 185.7 -134.9C199.4 -114.9 206 -91.9 212.1 -68.9C218.2 -45.9 223.9 -23 229.5 0L0 0Z'
+              fill='#84c318'></path>
+          </g>
+        </svg>

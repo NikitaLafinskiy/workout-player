@@ -4,6 +4,8 @@ import usePlaylist from '../hooks/usePlaylist';
 import { PlaylistContext } from '../Contexts/PlaylistContext';
 import Circle from '../Components/Circle';
 import styles from '../styles/components/circle.module.css';
+import Image from 'next/image';
+// import LandingSVG from '../pages/images/landing.svg';
 
 function Index(props) {
   const key = 'AIzaSyCkhQc1Gu6kmb6pYcfArYo75WXgSs_5PFw';
@@ -49,17 +51,37 @@ function Index(props) {
   }
 
   const playLink = shuffled ? (
-    <Circle index={true}>
-      <Link href={`/play/${shuffled[0]}`}>
-        <a style={{ height: '100%' }}>
-          <p id={styles.innerLink}>caramel</p>
-        </a>
-      </Link>
-    </Circle>
+    <Link href={`/play/${shuffled[0]}`}>
+      <a style={{ height: '100%' }}>
+        <Image
+          src='/images/note-light-2.svg'
+          alt='note image'
+          width='1074'
+          height='1074'
+          layout='intrinsic'
+        />
+      </a>
+    </Link>
   ) : (
     <div></div>
   );
-  return <div>{playLink}</div>;
+  return (
+    <>
+      <Image src='/images/landing.svg' alt='landing image' layout='fill' />
+      <div id={styles.image}>{playLink} </div>
+      <div id={styles.options}>
+        <Link href={`/modify`}>
+          <a>
+            <Image
+              src='/images/options.png'
+              alt='options image'
+              layout='fill'
+            />
+          </a>
+        </Link>
+      </div>
+    </>
+  );
 }
 
 export default Index;
