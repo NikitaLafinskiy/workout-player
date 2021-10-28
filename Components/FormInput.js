@@ -9,6 +9,7 @@ export default function FormInput(props) {
       onChange={props.handleChange}
       value={props.value}
       placeholder={props.placeholder}
+      name={props.name}
     />
   );
 }
