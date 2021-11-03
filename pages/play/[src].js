@@ -18,7 +18,7 @@ function Player(props) {
   );
   const [intermissionItems, setIntermissionItems] = useState(
     typeof window !== 'undefined' &&
-      JSON.parse(localStorage.getItem('intermissionsItems'))
+      JSON.parse(localStorage.getItem('intermissionItems'))
   );
   const [allow, setAllow] = useState(
     typeof window !== 'undefined' && JSON.parse(localStorage.getItem('allow'))
@@ -31,11 +31,16 @@ function Player(props) {
     console.log('OPTS');
     console.log(opts);
     console.log(src);
+    console.log(intermissionItems);
 
     if (videoRef.current && typeof window !== 'undefined' && allow && src) {
-      console.log(items[localStorage.getItem('count')]);
-      console.log(localStorage.getItem('count'));
-      console.log(items[localStorage.getItem('count')]);
+      // console.log(items[localStorage.getItem('count')]);
+      // console.log(localStorage.getItem('count'));
+      // console.log(items[localStorage.getItem('count')]);
+      console.log('ITEMS');
+      console.log(intermissionItems);
+      console.log('COUNT');
+      console.log(localStorage.getItem('intermissionCount'));
       const player = new YouTubeToHtml5({
         autoload: false,
         withAudio: true,
@@ -56,8 +61,14 @@ function Player(props) {
             'count',
             parseInt(localStorage.getItem('count')) + 1
           );
+          console.log('BOTH');
+          console.log(opts.both);
           console.log('UPDATED COUNT');
+          console.log(
+            intermissionItems[localStorage.getItem('intermissionCount')]
+          );
           if (opts.both) {
+            console.log('reached');
             if (intermissionItems[localStorage.getItem('intermissionCount')]) {
               router.push(
                 '/intermission/' +
@@ -73,13 +84,13 @@ function Player(props) {
             if (items[localStorage.getItem('count')]) {
               // router.replace("")
               router.push('/play/' + items[localStorage.getItem('count')]);
-              setTimeout(() => {
-                router.reload();
-              }, 100);
             } else if (!items[localStorage.getItem('count')]) {
               localStorage.setItem('count', 0);
               router.push('/play/' + items[0]);
             }
+            setTimeout(() => {
+              router.reload();
+            }, 100);
           }
           setTimeout(() => {
             router.reload();
