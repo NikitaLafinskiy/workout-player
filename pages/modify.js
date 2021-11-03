@@ -1,20 +1,20 @@
-import React, { useEffect, useState, useContext } from "react";
-import Image from "next/image";
-import FormInput from "../Components/FormInput";
-import FormWrapper from "../Components/FormWrapper";
-import Button from "../Components/Button";
-import styles from "../styles/modify.module.css";
-import { useRouter } from "next/router";
+import React, { useEffect, useState, useContext } from 'react';
+import Image from 'next/image';
+import FormInput from '../Components/FormInput';
+import FormWrapper from '../Components/FormWrapper';
+import Button from '../Components/Button';
+import styles from '../styles/modify.module.css';
+import { useRouter } from 'next/router';
 
 function Index(props) {
   const router = useRouter();
   const [state, setState] = useState({
     both: false,
     full: true,
-    playlist1: "",
-    playlist2: "",
-    time1: "",
-    time2: "",
+    playlist1: '',
+    playlist2: '',
+    time1: '',
+    time2: '',
   });
   const [forms, setForms] = useState(null);
   const handleClick = () => {
@@ -27,8 +27,8 @@ function Index(props) {
       time1,
       time2,
     });
-    localStorage.setItem("opts", opts);
-    // router.push("/");
+    localStorage.setItem('opts', opts);
+    router.push('/');
   };
   const handleChange = (e) => {
     setState((prev) => {

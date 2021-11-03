@@ -1,22 +1,20 @@
-import React, { useEffect, useState, useContext } from "react";
-import Link from "next/link";
-import usePlaylist from "../hooks/usePlaylist";
-import { PlaylistContext } from "../Contexts/PlaylistContext";
-import styles from "../styles/components/circle.module.css";
-import Image from "next/image";
-// import LandingSVG from '../pages/images/landing.svg';
+import React, { useEffect, useState, useContext } from 'react';
+import Link from 'next/link';
+import usePlaylist from '../hooks/usePlaylist';
+import { PlaylistContext } from '../Contexts/PlaylistContext';
+import styles from '../styles/components/circle.module.css';
+import Image from 'next/image';
 
 function Index(props) {
-  const key = "AIzaSyCkhQc1Gu6kmb6pYcfArYo75WXgSs_5PFw";
-  //'PLy1OvPJDc50Ri963vIYgtnjgPqLTMat_V'
+  const key = 'AIzaSyCkhQc1Gu6kmb6pYcfArYo75WXgSs_5PFw';
 
   const { setItems, setIntermissionItems, setAllow } =
     useContext(PlaylistContext);
   const [itemID, setItemID] = useState([]);
   const [intermissionItemID, setIntermissionItemID] = useState([]);
 
-  if (typeof window !== "undefined") {
-    const opts = JSON.parse(localStorage.getItem("opts"));
+  if (typeof window !== 'undefined') {
+    const opts = JSON.parse(localStorage.getItem('opts'));
     if (opts) {
       const items = usePlaylist(opts.playlist1, key);
       const itemsIntermission =
@@ -30,23 +28,20 @@ function Index(props) {
           });
         });
       };
-      // console.log(items);
-      // console.log(itemsIntermission);
       useEffect(() => {
-        if (typeof window !== "undefined") {
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('allow', true);
           if (items && itemsIntermission) {
-            setAllow(true);
             convertToIds(items, setItemID);
             convertToIds(itemsIntermission, setIntermissionItemID);
           } else if (items) {
-            setAllow(true);
             convertToIds(items, setItemID);
           }
         }
       }, [items, itemsIntermission, window]);
 
-      localStorage.setItem("count", 0);
-      localStorage.setItem("intermissionCount", 0);
+      localStorage.setItem('count', 0);
+      localStorage.setItem('intermissionCount', 0);
     }
   }
 
@@ -55,12 +50,17 @@ function Index(props) {
   };
 
   const shuffled = randomize(itemID);
-  setItems(randomize(itemID));
-  setIntermissionItems(randomize(intermissionItemID));
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('items', JSON.stringify(randomize(itemID)));
+    localStorage.setItem(
+      'intermissionItems',
+      JSON.stringify(randomize(intermissionItemID))
+    );
+  }
 
   const playLink = shuffled ? (
     <Link href={`/play/${shuffled[0]}`}>
-      <a style={{ height: "100%" }}>
+      <a style={{ height: '100%' }}>
         <Image
           src='/images/note-light-2.svg'
           alt='note image'
