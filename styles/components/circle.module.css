@@ -4,8 +4,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  width: 30vw;
-  height: 30vw;
+  width: 40vw;
+  height: 40vw;
   background: rgb(255, 35, 254);
   background: linear-gradient(
     30deg,
@@ -43,14 +43,15 @@
 }
 #videoCircle {
   position: absolute;
-  width: 30vw;
-  height: 30vw;
-  top: 40%;
-  left: 50%;
+  width: 32vw;
+  height: 32vw;
+  top: 44vh;
+  left: 50vw;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-color: rgb(0, 0, 0);
   overflow: hidden;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.678);
 }
 #videoCircle > * {
   position: relative;
@@ -88,8 +89,8 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-  /* background-image: url(../../styles/curves/landing.svg); */
-  z-index: 0;
+  background-color: #503d42;
+  z-index: -2;
   background-size: 100%;
   background-repeat: no-repeat;
 }
@@ -109,5 +110,16 @@
   #options {
     width: 8vw;
     height: 8vw;
+  }
+  #videoCircle {
+    width: 40vw;
+    height: 40vw;
+  }
+}
+
+@media (max-width: 800px) {
+  #videoCircle {
+    width: 50vw;
+    height: 50vw;
   }
 }

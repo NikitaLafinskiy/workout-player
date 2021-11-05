@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import styles from "../styles/components/countdown.module.css";
+import { useState, useEffect } from 'react';
+import styles from '../styles/components/countdown.module.css';
 
 const Countdown = (props, ref) => {
   const [time, setTime] = useState(0);
@@ -12,7 +12,7 @@ const Countdown = (props, ref) => {
   }, [null]);
   return (
     <div id={styles.countdownWrap}>
-      <div id={styles.bar} style={{ width: 100 - time + "%" }}></div>{" "}
+      <div id={styles.bar} style={{ width: 100 - time + '%' }}></div>
     </div>
   );
 };

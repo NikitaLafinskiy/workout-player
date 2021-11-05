@@ -77,6 +77,7 @@ function Index(props) {
   return (
     <>
       <Image src='/images/landing.svg' alt='landing image' layout='fill' />
+      <div id={styles.background_low}></div>
       <div id={styles.image}>{playLink} </div>
       <div id={styles.options}>
         <Link href={`/modify`}>

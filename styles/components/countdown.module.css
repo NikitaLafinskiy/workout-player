@@ -1,11 +1,6 @@
 #bar {
-  background: linear-gradient(
-    30deg,
-    rgba(255, 35, 254, 1) 0%,
-    rgba(0, 228, 255, 1) 100%
-  );
+  background: #84c318;
   height: 100%;
-  border-radius: 50px;
 }
 #countdownWrap {
   position: absolute;

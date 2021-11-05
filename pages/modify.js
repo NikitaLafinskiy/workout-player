@@ -129,6 +129,7 @@ function Index(props) {
   const out = forms ? forms : <></>;
   return (
     <>
+      <div id={styles.background_low}></div>
       <FormWrapper>
         <h1>Options: </h1>
         <div className={styles.checkbox}>
