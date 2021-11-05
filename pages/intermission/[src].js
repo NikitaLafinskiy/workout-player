@@ -1,32 +1,32 @@
-import React, { useEffect, useContext, useState, useRef } from 'react';
-import YouTubeToHtml5 from '@thelevicole/youtube-to-html5-loader';
-import { useRouter } from 'next/router';
-import { PlaylistContext } from '../../Contexts/PlaylistContext';
-import Video from '../../Components/Video';
-import Circle from '../../Components/Circle';
-import Countdown from '../../Components/Countdown';
+import React, { useEffect, useContext, useState, useRef } from "react";
+import YouTubeToHtml5 from "@thelevicole/youtube-to-html5-loader";
+import { useRouter } from "next/router";
+import { PlaylistContext } from "../../Contexts/PlaylistContext";
+import Video from "../../Components/Video";
+import Circle from "../../Components/Circle";
+import Countdown from "../../Components/Countdown";
 
 function Player(props) {
   const router = useRouter();
   const videoRef = useRef(null);
   const [opts, setOpts] = useState(
-    typeof window !== 'undefined' && JSON.parse(localStorage.getItem('opts'))
+    typeof window !== "undefined" && JSON.parse(localStorage.getItem("opts"))
   );
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState("");
   const [items, setItems] = useState(
-    typeof window !== 'undefined' && JSON.parse(localStorage.getItem('items'))
+    typeof window !== "undefined" && JSON.parse(localStorage.getItem("items"))
   );
   const [intermissionItems, setIntermissionItems] = useState(
-    typeof window !== 'undefined' &&
-      JSON.parse(localStorage.getItem('intermissionsItems'))
+    typeof window !== "undefined" &&
+      JSON.parse(localStorage.getItem("intermissionsItems"))
   );
   const [allow, setAllow] = useState(
-    typeof window !== 'undefined' && JSON.parse(localStorage.getItem('allow'))
+    typeof window !== "undefined" && JSON.parse(localStorage.getItem("allow"))
   );
 
   const src = router.query.src;
   useEffect(() => {
-    if (videoRef.current && typeof window !== 'undefined' && allow && src) {
+    if (videoRef.current && typeof window !== "undefined" && allow && src) {
       console.log(src);
       const player = new YouTubeToHtml5({
         autoload: false,
@@ -45,28 +45,27 @@ function Player(props) {
         const rerouteTimeout = setTimeout(() => {
           videoRef.current?.pause();
           localStorage.setItem(
-            'intermissionCount',
-            parseInt(localStorage.getItem('intermissionCount')) + 1
+            "intermissionCount",
+            parseInt(localStorage.getItem("intermissionCount")) + 1
           );
           if (opts.both) {
-            if (items[localStorage.getItem('count')]) {
-              router.push('/play/' + items[localStorage.getItem('count')]);
-            } else if (!items[localStorage.getItem('count')]) {
-              localStorage.setItem('items', 0);
-              router.push('/play/' + items[0]);
+            if (items[localStorage.getItem("count")]) {
+              router.push("/play/" + items[localStorage.getItem("count")]);
+            } else if (!items[localStorage.getItem("count")]) {
+              localStorage.setItem("items", 0);
+              router.push("/play/" + items[0]);
             }
           } else if (!opts.both) {
-            if (intermissionItems[localStorage.getItem('intermissionCount')]) {
-              // router.replace("")
+            if (intermissionItems[localStorage.getItem("intermissionCount")]) {
               router.push(
-                '/play/' +
-                  intermissionItems[localStorage.getItem('intermissionCount')]
+                "/play/" +
+                  intermissionItems[localStorage.getItem("intermissionCount")]
               );
             } else if (
-              !intermissionItems[localStorage.getItem('intermissionCount')]
+              !intermissionItems[localStorage.getItem("intermissionCount")]
             ) {
-              localStorage.setItem('intermissionCount', 0);
-              router.push('/intermission/' + intermissionItems[0]);
+              localStorage.setItem("intermissionCount", 0);
+              router.push("/intermission/" + intermissionItems[0]);
             }
             setTimeout(() => {
               router.reload();
@@ -80,7 +79,7 @@ function Player(props) {
       if (videoRef.readyState >= 2) {
         func();
       } else {
-        videoRef.current.addEventListener('loadedmetadata', func);
+        videoRef.current.addEventListener("loadedmetadata", func);
       }
     }
   }, [src, videoRef.current, opts]);
